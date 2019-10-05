@@ -10,6 +10,20 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    // An array with every character, this allows us to assign a specific letter to each button when a new game
+    // is generated
+
+    final Character[] allLetters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+                                    'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+                                    'U', 'V', 'W', 'X', 'Y', 'Z'};
+
+    // An array that contains all of the vowels. We do not need to keep an array with the consonants, because
+    // when we check every letter we can simply loop through the word and if the current letter is not in
+    // the vowels array then it is a consonant
+
+    final Character[] vowels = {'A', 'I', 'E', 'O', 'U'};
+
+
     // This hashmap contains every button position ([1, 2, 3, 4] and then a new row that begins with 5,
     // and so forth) as the key and the the other button positions that a user is able to click as the value
     // This will serve as a way to keep track of what button a user is on and what buttons they are allowed to press
