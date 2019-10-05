@@ -13,6 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Map<Button, Integer> btnsAndTheirPosition = new HashMap<Button, Integer>();
 
+    // A randomly generated index that will be used to assign a letter to every button
+    private Random randInt = new Random();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,5 +113,13 @@ public class MainActivity extends AppCompatActivity {
         clickableBtnPositions.put(14, new Integer[]{13, 10, 15});
         clickableBtnPositions.put(15, new Integer[]{14, 11, 16});
         clickableBtnPositions.put(16, new Integer[]{12, 15});
+
+        // A method that will give every button a letter
+
+//        for (Map.Entry<Button, Integer> btn : btnsAndTheirPosition.entrySet()) {
+//            int randIndex = randInt.nextInt(23);
+//            btn.getKey().setText(allLetters[randIndex].toString());
+//        }
+
     }
 }
