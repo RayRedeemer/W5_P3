@@ -3,8 +3,14 @@ package com.example.w5_p3;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -103,6 +109,5 @@ public class MainActivity extends AppCompatActivity {
         clickableBtnPositions.put(14, new Integer[]{13, 10, 15});
         clickableBtnPositions.put(15, new Integer[]{14, 11, 16});
         clickableBtnPositions.put(16, new Integer[]{12, 15});
-
     }
 }
