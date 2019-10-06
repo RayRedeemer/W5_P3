@@ -20,139 +20,155 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5">
 
         <Button
-            android:id="@+id/button21"
+            android:id="@+id/btn16"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="Button"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button20" />
+            app:layout_constraintStart_toEndOf="@+id/btn15" />
 
         <Button
-            android:id="@+id/button20"
+            android:id="@+id/btn15"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="Button"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button19" />
+            app:layout_constraintStart_toEndOf="@+id/btn14" />
 
         <Button
-            android:id="@+id/button19"
+            android:id="@+id/btn14"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="Button"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button18" />
+            app:layout_constraintStart_toEndOf="@+id/btn13" />
 
         <Button
-            android:id="@+id/button18"
+            android:id="@+id/btn13"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="Button"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button16"
+            android:id="@+id/btn11"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/button20"
-            app:layout_constraintEnd_toStartOf="@+id/button17" />
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/btn15"
+            app:layout_constraintEnd_toStartOf="@+id/btn12" />
 
         <Button
-            android:id="@+id/button17"
+            android:id="@+id/btn12"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/button21"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/btn16"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
-            android:id="@+id/button14"
+            android:id="@+id/btn9"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/button18"
-            app:layout_constraintEnd_toStartOf="@+id/button15"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/btn13"
+            app:layout_constraintEnd_toStartOf="@+id/btn10"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button15"
+            android:id="@+id/btn10"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/button19"
-            app:layout_constraintEnd_toStartOf="@+id/button16" />
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/btn14"
+            app:layout_constraintEnd_toStartOf="@+id/btn11" />
 
         <Button
-            android:id="@+id/button12"
+            android:id="@+id/btn7"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/button16"
-            app:layout_constraintEnd_toStartOf="@+id/button13" />
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/btn11"
+            app:layout_constraintEnd_toStartOf="@+id/btn8" />
 
         <Button
-            android:id="@+id/button13"
+            android:id="@+id/btn8"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/button17"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/btn12"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
-            android:id="@+id/button11"
+            android:id="@+id/btn6"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/button15"
-            app:layout_constraintEnd_toStartOf="@+id/button12" />
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/btn10"
+            app:layout_constraintEnd_toStartOf="@+id/btn7" />
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/btn4"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/button13"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/btn8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button10"
+            android:id="@+id/btn5"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/button14"
-            app:layout_constraintEnd_toStartOf="@+id/button11"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/btn9"
+            app:layout_constraintEnd_toStartOf="@+id/btn6"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/btn1"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/button10"
-            app:layout_constraintEnd_toStartOf="@+id/button7"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/btn5"
+            app:layout_constraintEnd_toStartOf="@+id/btn2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/btn3"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/button12"
-            app:layout_constraintEnd_toStartOf="@+id/button9"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/btn7"
+            app:layout_constraintEnd_toStartOf="@+id/btn4"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/btn2"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:text="Button"
-            app:layout_constraintBottom_toTopOf="@+id/button11"
-            app:layout_constraintEnd_toStartOf="@+id/button8"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/btn6"
+            app:layout_constraintEnd_toStartOf="@+id/btn3"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
