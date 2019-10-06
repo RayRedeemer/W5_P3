@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -40,7 +42,7 @@ public class game_layout extends Fragment {
     // and so forth) as the key and the the other button positions that a user is able to click as the value
     // This will serve as a way to keep track of what button a user is on and what buttons they are allowed to press
 
-    private Map<Integer, Integer[]> clickableBtnPositions = new HashMap<Integer, Integer[]>();
+    private Map<Integer, Button[]> clickableBtnPositions = new HashMap<>();
 
     // Every button is named after its position
 
@@ -146,22 +148,22 @@ public class game_layout extends Fragment {
         // a user is on buttom 1, then they can ONLY click on 2 and 5 because diagonal movement
         // is prohibited
 
-        clickableBtnPositions.put(1, new Integer[]{2, 5});
-        clickableBtnPositions.put(2, new Integer[]{1, 6, 3});
-        clickableBtnPositions.put(3, new Integer[]{2, 7, 4});
-        clickableBtnPositions.put(4, new Integer[]{3, 8});
-        clickableBtnPositions.put(5, new Integer[]{1, 9, 6});
-        clickableBtnPositions.put(6, new Integer[]{2, 5, 7, 10});
-        clickableBtnPositions.put(7, new Integer[]{3, 6, 8, 11});
-        clickableBtnPositions.put(8, new Integer[]{4, 7, 12});
-        clickableBtnPositions.put(9, new Integer[]{5, 10, 13});
-        clickableBtnPositions.put(10, new Integer[]{6, 9, 11, 14});
-        clickableBtnPositions.put(11, new Integer[]{7, 10, 12, 15});
-        clickableBtnPositions.put(12, new Integer[]{8, 11, 16});
-        clickableBtnPositions.put(13, new Integer[]{9, 14});
-        clickableBtnPositions.put(14, new Integer[]{13, 10, 15});
-        clickableBtnPositions.put(15, new Integer[]{14, 11, 16});
-        clickableBtnPositions.put(16, new Integer[]{12, 15});
+        clickableBtnPositions.put(1, new Button[]{btn2, btn5});
+        clickableBtnPositions.put(2, new Button[]{btn1, btn6, btn3});
+        clickableBtnPositions.put(3, new Button[]{btn2, btn7, btn4});
+        clickableBtnPositions.put(4, new Button[]{btn3, btn8});
+        clickableBtnPositions.put(5, new Button[]{btn1, btn9, btn6});
+        clickableBtnPositions.put(6, new Button[]{btn2, btn5, btn7, btn10});
+        clickableBtnPositions.put(7, new Button[]{btn3, btn6, btn8, btn11});
+        clickableBtnPositions.put(8, new Button[]{btn4, btn7, btn12});
+        clickableBtnPositions.put(9, new Button[]{btn5, btn10, btn13});
+        clickableBtnPositions.put(10, new Button[]{btn6, btn9, btn11, btn14});
+        clickableBtnPositions.put(11, new Button[]{btn7, btn10, btn12, btn15});
+        clickableBtnPositions.put(12, new Button[]{btn8, btn11, btn16});
+        clickableBtnPositions.put(13, new Button[]{btn9, btn14});
+        clickableBtnPositions.put(14, new Button[]{btn13, btn10, btn15});
+        clickableBtnPositions.put(15, new Button[]{btn14, btn11, btn16});
+        clickableBtnPositions.put(16, new Button[]{btn12, btn15});
 
         //A method that will give every button a letter
 
@@ -183,6 +185,8 @@ public class game_layout extends Fragment {
             @Override
             public void onClick(View view) {
                 currentWord+=btn1.getText().toString();
+                currentBtn = btn1;
+                btn1.setClickable(false);
                 Log.i("word: ", currentWord);
             }
         });
