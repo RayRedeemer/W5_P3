@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,6 +75,10 @@ public class game_layout extends Fragment {
 
     // A variable that will keep track of the user's score
     private int score;
+
+    // A currentWord variable that will append the letters a user clicks on
+
+    private String currentWord = "";
 
     public game_layout() {
         // Required empty public constructor
@@ -170,6 +175,132 @@ public class game_layout extends Fragment {
         for (Map.Entry<Button, Integer> btn : btnsAndTheirPosition.entrySet()) {
             btn.getKey().setVisibility(View.VISIBLE);
         }
+
+        // Set an onClicklistener for every button so that when a user clicks on the button,
+        // the corresponding letter is appended to the currentWord string
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentWord+=btn1.getText().toString();
+                Log.i("word: ", currentWord);
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentWord+=btn2.getText().toString();
+                Log.i("word: ", currentWord);
+            }
+        });
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentWord+=btn3.getText().toString();
+                Log.i("word: ", currentWord);
+            }
+        });
+
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentWord+=btn4.getText().toString();
+                Log.i("word: ", currentWord);
+            }
+        });
+        btn5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentWord+=btn5.getText().toString();
+                Log.i("word: ", currentWord);
+            }
+        });
+
+        btn6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentWord+=btn6.getText().toString();
+                Log.i("word: ", currentWord);
+            }
+        });
+        btn7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentWord+=btn7.getText().toString();
+                Log.i("word: ", currentWord);
+            }
+        });
+
+        btn8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentWord+=btn8.getText().toString();
+                Log.i("word: ", currentWord);
+            }
+        });
+        btn9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentWord+=btn9.getText().toString();
+                Log.i("word: ", currentWord);
+            }
+        });
+
+        btn10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentWord+=btn10.getText().toString();
+                Log.i("word: ", currentWord);
+            }
+        });
+        btn11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentWord+=btn11.getText().toString();
+                Log.i("word: ", currentWord);
+            }
+        });
+
+        btn12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentWord+=btn12.getText().toString();
+                Log.i("word: ", currentWord);
+            }
+        });
+        btn13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentWord+=btn13.getText().toString();
+                Log.i("word: ", currentWord);
+            }
+        });
+
+        btn14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentWord+=btn14.getText().toString();
+                Log.i("word: ", currentWord);
+            }
+        });
+        btn15.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentWord+=btn15.getText().toString();
+                Log.i("word: ", currentWord);
+            }
+        });
+
+        btn16.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentWord+=btn16.getText().toString();
+                Log.i("word: ", currentWord);
+            }
+        });
+
+
 
         return view;
 
