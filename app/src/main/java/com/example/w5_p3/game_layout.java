@@ -1,11 +1,13 @@
 package com.example.w5_p3;
 
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,6 +66,13 @@ public class game_layout extends Fragment {
     private Button btn14;
     private Button btn15;
     private Button btn16;
+
+    // Arraylist with every button
+    ArrayList<Button> allButtons = new ArrayList<Button>();
+
+    // arraylist that contains the used buttons
+
+    ArrayList<Button> usedButtons = new ArrayList<Button>();
 
     // A button variable named currentBtn to keep track of which button the user has most
     // recently clicked
@@ -135,6 +144,23 @@ public class game_layout extends Fragment {
         btn15 = view.findViewById(R.id.btn15);
         btn16 = view.findViewById(R.id.btn16);
 
+        // add every button to an arraylist
+        allButtons.add(btn1);
+        allButtons.add(btn2);
+        allButtons.add(btn3);
+        allButtons.add(btn4);
+        allButtons.add(btn5);
+        allButtons.add(btn6);
+        allButtons.add(btn7);
+        allButtons.add(btn8);
+        allButtons.add(btn9);
+        allButtons.add(btn10);
+        allButtons.add(btn11);
+        allButtons.add(btn12);
+        allButtons.add(btn13);
+        allButtons.add(btn14);
+        allButtons.add(btn15);
+        allButtons.add(btn16);
 
         // Associate every button with their corresponding position
         btnsAndTheirPosition.put(btn1, 1);
@@ -196,19 +222,32 @@ public class game_layout extends Fragment {
             @Override
             public void onClick(View view) {
                 if (firstMove) {
-                    Log.i("first move", "first move");
                     currentWord += btn1.getText().toString();
+                    Log.i("word", currentWord);
                     btn1.setClickable(false);
+                    usedButtons.add(btn1);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(1)));
                     firstMove = false;
-                } else {
-                    if (clickable.contains(btn1)) {
-                        Log.i("not first move", "not first move");
-                        currentWord += btn1.getText().toString();
-                        clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(1)));
-                    } else {
-                        Toast.makeText(getActivity(), "Diagonal movement", Toast.LENGTH_SHORT).show();
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(1)));
+                    for(Button btn : allButtons){
+                        if (!validPositions.contains(btn)){
+                            btn.setClickable(false);
+                        }
                     }
+                }
+
+                else {
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(2)));
+                    usedButtons.add(btn2);
+                    for (Button btn : allButtons){
+                        if (!usedButtons.contains(btn) && validPositions.contains(btn)){
+                            btn.setClickable(true);
+                        }
+                    }
+                    currentWord += btn2.getText().toString();
+                    Log.i("word", currentWord);
+                    btn2.setClickable(false);
+                    usedButtons.add(btn2);
                 }
             }
         });
@@ -216,19 +255,33 @@ public class game_layout extends Fragment {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (firstMove){
-                    Log.i("first move", "first move");
-                    currentWord+=btn2.getText().toString();
+                if (firstMove) {
+                    currentWord += btn2.getText().toString();
+                    Log.i("word", currentWord);
                     btn2.setClickable(false);
+                    usedButtons.add(btn2);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(2)));
                     firstMove = false;
-                } else {
-                    if (clickable.contains(btn2)) {
-                        currentWord += btn2.getText().toString();
-                        clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(2)));
-                    } else {
-                        Toast.makeText(getActivity(), "Diagonal movement", Toast.LENGTH_SHORT).show();
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(2)));
+                    for(Button btn : allButtons){
+                        if (!validPositions.contains(btn)){
+                            btn.setClickable(false);
+                        }
                     }
+                }
+
+                else {
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(2)));
+                    usedButtons.add(btn2);
+                    for (Button btn : allButtons){
+                        if (!usedButtons.contains(btn) && validPositions.contains(btn)){
+                            btn.setClickable(true);
+                        }
+                    }
+                    currentWord += btn2.getText().toString();
+                    Log.i("word", currentWord);
+                    btn2.setClickable(false);
+                    usedButtons.add(btn2);
                 }
             }
         });
@@ -236,96 +289,491 @@ public class game_layout extends Fragment {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentWord+=btn3.getText().toString();
+                if (firstMove) {
+                    currentWord += btn3.getText().toString();
+                    Log.i("word", currentWord);
+                    btn3.setClickable(false);
+                    usedButtons.add(btn3);
+                    clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(3)));
+                    firstMove = false;
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(3)));
+                    for(Button btn : allButtons){
+                        if (!validPositions.contains(btn)){
+                            btn.setClickable(false);
+                        }
+                    }
+                }
+
+                else {
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(3)));
+                    usedButtons.add(btn3);
+                    for (Button btn : allButtons){
+                        if (!usedButtons.contains(btn) && validPositions.contains(btn)){
+                            btn.setClickable(true);
+                        }
+                    }
+                    currentWord += btn3.getText().toString();
+                    Log.i("word", currentWord);
+                    btn3.setClickable(false);
+                    usedButtons.add(btn3);
+                }
             }
         });
 
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentWord+=btn4.getText().toString();
+                if (firstMove) {
+                    //Log.i("first move", "first move");
+                    currentWord += btn4.getText().toString();
+                    Log.i("word", currentWord);
+                    btn4.setClickable(false);
+                    usedButtons.add(btn4);
+                    clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(4)));
+                    firstMove = false;
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(4)));
+                    for(Button btn : allButtons){
+                        if (!validPositions.contains(btn)){
+                            btn.setClickable(false);
+                        }
+                    }
+                }
+
+                else {
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(4)));
+                    usedButtons.add(btn4);
+                    for (Button btn : allButtons){
+                        if (!usedButtons.contains(btn) && validPositions.contains(btn)){
+                            btn.setClickable(true);
+                        }
+                    }
+                    currentWord += btn4.getText().toString();
+                    Log.i("word", currentWord);
+                    btn4.setClickable(false);
+                    usedButtons.add(btn4);
+                }
             }
         });
+
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentWord+=btn5.getText().toString();
+                if (firstMove) {
+                    //Log.i("first move", "first move");
+                    currentWord += btn5.getText().toString();
+                    Log.i("word", currentWord);
+                    btn5.setClickable(false);
+                    usedButtons.add(btn4);
+                    clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(5)));
+                    firstMove = false;
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(5)));
+                    for(Button btn : allButtons){
+                        if (!validPositions.contains(btn)){
+                            btn.setClickable(false);
+                        }
+                    }
+                }
+
+                else {
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(5)));
+                    usedButtons.add(btn5);
+                    for (Button btn : allButtons){
+                        if (!usedButtons.contains(btn) && validPositions.contains(btn)){
+                            btn.setClickable(true);
+                        }
+                    }
+                    currentWord += btn5.getText().toString();
+                    Log.i("word", currentWord);
+                    btn5.setClickable(false);
+                    usedButtons.add(btn5);
+                }
             }
         });
 
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentWord+=btn6.getText().toString();
+                if (firstMove) {
+                    //Log.i("first move", "first move");
+                    currentWord += btn6.getText().toString();
+                    Log.i("word", currentWord);
+                    btn6.setClickable(false);
+                    usedButtons.add(btn6);
+                    clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(6)));
+                    firstMove = false;
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(6)));
+                    for(Button btn : allButtons){
+                        if (!validPositions.contains(btn)){
+                            btn.setClickable(false);
+                        }
+                    }
+                }
+
+                else {
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(6)));
+                    usedButtons.add(btn6);
+                    for (Button btn : allButtons){
+                        if (!usedButtons.contains(btn) && validPositions.contains(btn)){
+                            btn.setClickable(true);
+                        }
+                    }
+                    currentWord += btn6.getText().toString();
+                    Log.i("word", currentWord);
+                    btn6.setClickable(false);
+                    usedButtons.add(btn6);
+                }
             }
         });
+
         btn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentWord+=btn7.getText().toString();
+                if (firstMove) {
+                    //Log.i("first move", "first move");
+                    currentWord += btn7.getText().toString();
+                    Log.i("word", currentWord);
+                    btn7.setClickable(false);
+                    usedButtons.add(btn7);
+                    clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(7)));
+                    firstMove = false;
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(7)));
+                    for(Button btn : allButtons){
+                        if (!validPositions.contains(btn)){
+                            btn.setClickable(false);
+                        }
+                    }
+                }
+
+                else {
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(7)));
+                    usedButtons.add(btn7);
+                    for (Button btn : allButtons){
+                        if (!usedButtons.contains(btn) && validPositions.contains(btn)){
+                            btn.setClickable(true);
+                        }
+                    }
+                    currentWord += btn7.getText().toString();
+                    Log.i("word", currentWord);
+                    btn7.setClickable(false);
+                    usedButtons.add(btn7);
+                }
             }
         });
 
         btn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentWord+=btn8.getText().toString();
+                if (firstMove) {
+                    //Log.i("first move", "first move");
+                    currentWord += btn8.getText().toString();
+                    Log.i("word", currentWord);
+                    btn8.setClickable(false);
+                    usedButtons.add(btn8);
+                    clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(8)));
+                    firstMove = false;
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(8)));
+                    for(Button btn : allButtons){
+                        if (!validPositions.contains(btn)){
+                            btn.setClickable(false);
+                        }
+                    }
+                }
+
+                else {
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(8)));
+                    usedButtons.add(btn8);
+                    for (Button btn : allButtons){
+                        if (!usedButtons.contains(btn) && validPositions.contains(btn)){
+                            btn.setClickable(true);
+                        }
+                    }
+                    currentWord += btn8.getText().toString();
+                    Log.i("word", currentWord);
+                    btn8.setClickable(false);
+                    usedButtons.add(btn8);
+                }
             }
         });
+
         btn9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentWord+=btn9.getText().toString();
+                if (firstMove) {
+                    //Log.i("first move", "first move");
+                    currentWord += btn9.getText().toString();
+                    Log.i("word", currentWord);
+                    btn9.setClickable(false);
+                    usedButtons.add(btn9);
+                    clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(9)));
+                    firstMove = false;
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(9)));
+                    for(Button btn : allButtons){
+                        if (!validPositions.contains(btn)){
+                            btn.setClickable(false);
+                        }
+                    }
+                }
+
+                else {
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(9)));
+                    usedButtons.add(btn9);
+                    for (Button btn : allButtons){
+                        if (!usedButtons.contains(btn) && validPositions.contains(btn)){
+                            btn.setClickable(true);
+                        }
+                    }
+                    currentWord += btn9.getText().toString();
+                    Log.i("word", currentWord);
+                    btn9.setClickable(false);
+                    usedButtons.add(btn9);
+                }
             }
         });
 
         btn10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentWord+=btn10.getText().toString();
+                if (firstMove) {
+                    //Log.i("first move", "first move");
+                    currentWord += btn10.getText().toString();
+                    Log.i("word", currentWord);
+                    btn10.setClickable(false);
+                    usedButtons.add(btn10);
+                    clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(10)));
+                    firstMove = false;
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(10)));
+                    for(Button btn : allButtons){
+                        if (!validPositions.contains(btn)){
+                            btn.setClickable(false);
+                        }
+                    }
+                }
+
+                else {
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(10)));
+                    usedButtons.add(btn10);
+                    for (Button btn : allButtons){
+                        if (!usedButtons.contains(btn) && validPositions.contains(btn)){
+                            btn.setClickable(true);
+                        }
+                    }
+                    currentWord += btn10.getText().toString();
+                    Log.i("word", currentWord);
+                    btn10.setClickable(false);
+                    usedButtons.add(btn10);
+                }
             }
         });
+
         btn11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentWord+=btn11.getText().toString();
+                if (firstMove) {
+                    //Log.i("first move", "first move");
+                    currentWord += btn11.getText().toString();
+                    Log.i("word", currentWord);
+                    btn11.setClickable(false);
+                    usedButtons.add(btn11);
+                    clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(11)));
+                    firstMove = false;
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(11)));
+                    for(Button btn : allButtons){
+                        if (!validPositions.contains(btn)){
+                            btn.setClickable(false);
+                        }
+                    }
+                }
+
+                else {
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(11)));
+                    usedButtons.add(btn11);
+                    for (Button btn : allButtons){
+                        if (!usedButtons.contains(btn) && validPositions.contains(btn)){
+                            btn.setClickable(true);
+                        }
+                    }
+                    currentWord += btn11.getText().toString();
+                    Log.i("word", currentWord);
+                    btn11.setClickable(false);
+                    usedButtons.add(btn11);
+                }
             }
         });
 
         btn12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentWord+=btn12.getText().toString();
+                if (firstMove) {
+                    //Log.i("first move", "first move");
+                    currentWord += btn12.getText().toString();
+                    Log.i("word", currentWord);
+                    btn12.setClickable(false);
+                    usedButtons.add(btn12);
+                    clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(12)));
+                    firstMove = false;
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(12)));
+                    for(Button btn : allButtons){
+                        if (!validPositions.contains(btn)){
+                            btn.setClickable(false);
+                        }
+                    }
+                }
+
+                else {
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(12)));
+                    usedButtons.add(btn12);
+                    for (Button btn : allButtons){
+                        if (!usedButtons.contains(btn) && validPositions.contains(btn)){
+                            btn.setClickable(true);
+                        }
+                    }
+                    currentWord += btn12.getText().toString();
+                    Log.i("word", currentWord);
+                    btn12.setClickable(false);
+                    usedButtons.add(btn12);
+                }
             }
         });
+
         btn13.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentWord+=btn13.getText().toString();
+                if (firstMove) {
+                    //Log.i("first move", "first move");
+                    currentWord += btn13.getText().toString();
+                    Log.i("word", currentWord);
+                    btn13.setClickable(false);
+                    usedButtons.add(btn13);
+                    clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(13)));
+                    firstMove = false;
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(13)));
+                    for(Button btn : allButtons){
+                        if (!validPositions.contains(btn)){
+                            btn.setClickable(false);
+                        }
+                    }
+                }
+
+                else {
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(13)));
+                    usedButtons.add(btn13);
+                    for (Button btn : allButtons){
+                        if (!usedButtons.contains(btn) && validPositions.contains(btn)){
+                            btn.setClickable(true);
+                        }
+                    }
+                    currentWord += btn13.getText().toString();
+                    Log.i("word", currentWord);
+                    btn13.setClickable(false);
+                    usedButtons.add(btn13);
+                }
             }
         });
 
         btn14.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentWord+=btn14.getText().toString();
+                if (firstMove) {
+                    //Log.i("first move", "first move");
+                    currentWord += btn14.getText().toString();
+                    Log.i("word", currentWord);
+                    btn14.setClickable(false);
+                    usedButtons.add(btn4);
+                    clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(14)));
+                    firstMove = false;
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(14)));
+                    for(Button btn : allButtons){
+                        if (!validPositions.contains(btn)){
+                            btn.setClickable(false);
+                        }
+                    }
+                }
+
+                else {
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(14)));
+                    usedButtons.add(btn14);
+                    for (Button btn : allButtons){
+                        if (!usedButtons.contains(btn) && validPositions.contains(btn)){
+                            btn.setClickable(true);
+                        }
+                    }
+                    currentWord += btn14.getText().toString();
+                    Log.i("word", currentWord);
+                    btn14.setClickable(false);
+                    usedButtons.add(btn14);
+                }
             }
         });
+
         btn15.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentWord+=btn15.getText().toString();
+                if (firstMove) {
+                    //Log.i("first move", "first move");
+                    currentWord += btn15.getText().toString();
+                    Log.i("word", currentWord);
+                    btn5.setClickable(false);
+                    usedButtons.add(btn15);
+                    clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(15)));
+                    firstMove = false;
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(15)));
+                    for(Button btn : allButtons){
+                        if (!validPositions.contains(btn)){
+                            btn.setClickable(false);
+                        }
+                    }
+                }
+
+                else {
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(15)));
+                    usedButtons.add(btn15);
+                    for (Button btn : allButtons){
+                        if (!usedButtons.contains(btn) && validPositions.contains(btn)){
+                            btn.setClickable(true);
+                        }
+                    }
+                    currentWord += btn15.getText().toString();
+                    Log.i("word", currentWord);
+                    btn15.setClickable(false);
+                    usedButtons.add(btn15);
+                }
             }
         });
 
         btn16.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentWord+=btn16.getText().toString();
+                if (firstMove) {
+                    //Log.i("first move", "first move");
+                    currentWord += btn16.getText().toString();
+                    Log.i("word", currentWord);
+                    btn16.setClickable(false);
+                    usedButtons.add(btn4);
+                    clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(16)));
+                    firstMove = false;
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(16)));
+                    for(Button btn : allButtons){
+                        if (!validPositions.contains(btn)){
+                            btn.setClickable(false);
+                        }
+                    }
+                }
+
+                else {
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(16)));
+                    usedButtons.add(btn16);
+                    for (Button btn : allButtons){
+                        if (!usedButtons.contains(btn) && validPositions.contains(btn)){
+                            btn.setClickable(true);
+                        }
+                    }
+                    currentWord += btn16.getText().toString();
+                    Log.i("word", currentWord);
+                    btn16.setClickable(false);
+                    usedButtons.add(btn16);
+                }
             }
         });
-
-
 
         return view;
 
