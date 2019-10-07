@@ -67,6 +67,11 @@ public class game_layout extends Fragment {
     private Button btn15;
     private Button btn16;
 
+    // Clear & Submit Button
+
+    private Button clearBtn;
+    private Button submitBtn;
+
     // Arraylist with every button
     ArrayList<Button> allButtons = new ArrayList<Button>();
 
@@ -770,8 +775,18 @@ public class game_layout extends Fragment {
             }
         });
 
+        clearBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentWord = "";
+                firstMove = true;
+            }
+        });
+
         return view;
 
     }
+
+
 
 }
