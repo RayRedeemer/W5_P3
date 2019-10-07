@@ -74,11 +74,6 @@ public class game_layout extends Fragment {
 
     ArrayList<Button> usedButtons = new ArrayList<Button>();
 
-    // A button variable named currentBtn to keep track of which button the user has most
-    // recently clicked
-
-    private Button currentBtn;
-
     // A hashmap that associates every button in the game with its associated position
 
     private Map<Button, Integer> btnsAndTheirPosition = new HashMap<Button, Integer>();
@@ -98,9 +93,6 @@ public class game_layout extends Fragment {
 
     private boolean firstMove = true;
 
-    // instantiate an arraylist of buttons that a user can click on
-
-    private ArrayList<Button> clickable;
 
     public game_layout() {
         // Required empty public constructor
