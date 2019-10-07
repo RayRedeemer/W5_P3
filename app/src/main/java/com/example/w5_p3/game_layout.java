@@ -11,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -81,6 +83,15 @@ public class game_layout extends Fragment {
     // A currentWord variable that will append the letters a user clicks on
 
     private String currentWord = "";
+
+    // A variable to track if the user is currently on their first move or not. This will be used
+    // to track what buttons a user can click
+
+    private boolean firstMove = true;
+
+    // instantiate an arraylist of buttons that a user can click on
+
+    private ArrayList<Button> clickable;
 
     public game_layout() {
         // Required empty public constructor
@@ -184,25 +195,48 @@ public class game_layout extends Fragment {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentWord+=btn1.getText().toString();
-                currentBtn = btn1;
-                btn1.setClickable(false);
-                Log.i("word: ", currentWord);
+                if (firstMove) {
+                    Log.i("first move", "first move");
+                    currentWord += btn1.getText().toString();
+                    btn1.setClickable(false);
+                    clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(1)));
+                    firstMove = false;
+                } else {
+                    if (clickable.contains(btn1)) {
+                        Log.i("not first move", "not first move");
+                        currentWord += btn1.getText().toString();
+                        clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(1)));
+                    } else {
+                        Toast.makeText(getActivity(), "Diagonal movement", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentWord+=btn2.getText().toString();
-                Log.i("word: ", currentWord);
+                if (firstMove){
+                    Log.i("first move", "first move");
+                    currentWord+=btn2.getText().toString();
+                    btn2.setClickable(false);
+                    clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(2)));
+                    firstMove = false;
+                } else {
+                    if (clickable.contains(btn2)) {
+                        currentWord += btn2.getText().toString();
+                        clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(2)));
+                    } else {
+                        Toast.makeText(getActivity(), "Diagonal movement", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
+
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 currentWord+=btn3.getText().toString();
-                Log.i("word: ", currentWord);
             }
         });
 
@@ -210,14 +244,12 @@ public class game_layout extends Fragment {
             @Override
             public void onClick(View view) {
                 currentWord+=btn4.getText().toString();
-                Log.i("word: ", currentWord);
             }
         });
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 currentWord+=btn5.getText().toString();
-                Log.i("word: ", currentWord);
             }
         });
 
@@ -225,14 +257,12 @@ public class game_layout extends Fragment {
             @Override
             public void onClick(View view) {
                 currentWord+=btn6.getText().toString();
-                Log.i("word: ", currentWord);
             }
         });
         btn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 currentWord+=btn7.getText().toString();
-                Log.i("word: ", currentWord);
             }
         });
 
@@ -240,14 +270,12 @@ public class game_layout extends Fragment {
             @Override
             public void onClick(View view) {
                 currentWord+=btn8.getText().toString();
-                Log.i("word: ", currentWord);
             }
         });
         btn9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 currentWord+=btn9.getText().toString();
-                Log.i("word: ", currentWord);
             }
         });
 
@@ -255,14 +283,12 @@ public class game_layout extends Fragment {
             @Override
             public void onClick(View view) {
                 currentWord+=btn10.getText().toString();
-                Log.i("word: ", currentWord);
             }
         });
         btn11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 currentWord+=btn11.getText().toString();
-                Log.i("word: ", currentWord);
             }
         });
 
@@ -270,14 +296,12 @@ public class game_layout extends Fragment {
             @Override
             public void onClick(View view) {
                 currentWord+=btn12.getText().toString();
-                Log.i("word: ", currentWord);
             }
         });
         btn13.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 currentWord+=btn13.getText().toString();
-                Log.i("word: ", currentWord);
             }
         });
 
@@ -285,14 +309,12 @@ public class game_layout extends Fragment {
             @Override
             public void onClick(View view) {
                 currentWord+=btn14.getText().toString();
-                Log.i("word: ", currentWord);
             }
         });
         btn15.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 currentWord+=btn15.getText().toString();
-                Log.i("word: ", currentWord);
             }
         });
 
@@ -300,7 +322,6 @@ public class game_layout extends Fragment {
             @Override
             public void onClick(View view) {
                 currentWord+=btn16.getText().toString();
-                Log.i("word: ", currentWord);
             }
         });
 
