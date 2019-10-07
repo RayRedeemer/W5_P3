@@ -93,6 +93,9 @@ public class game_layout extends Fragment {
 
     private boolean firstMove = true;
 
+    // instantiate an arraylist of buttons that a user can click on
+
+    private ArrayList<Button> clickable;
 
     public game_layout() {
         // Required empty public constructor

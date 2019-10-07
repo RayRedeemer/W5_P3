@@ -19,8 +19,8 @@
     <fragment
         android:id="@+id/gamelayoutFragment"
         android:name="com.example.w5_p3.game_layout"
-        android:layout_width="484dp"
-        android:layout_height="559dp"
+        android:layout_width="278dp"
+        android:layout_height="418dp"
         android:layout_marginBottom="46dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomFragment"
         app:layout_constraintEnd_toEndOf="parent"
