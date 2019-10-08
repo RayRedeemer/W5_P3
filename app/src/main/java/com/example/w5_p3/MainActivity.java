@@ -26,20 +26,20 @@ public class MainActivity extends AppCompatActivity implements game_layout.Contr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String dict = "";
-        try {
-            InputStream is = getAssets().open("words.txt");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            dict = new String(buffer);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        String lines[] = dict.split("\\r?\\n");
-        Toast.makeText(this, lines[0], Toast.LENGTH_LONG).show();
+//        String dict = "";
+//        try {
+//            InputStream is = getAssets().open("words.txt");
+//            int size = is.available();
+//            byte[] buffer = new byte[size];
+//            is.read(buffer);
+//            is.close();
+//            dict = new String(buffer);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        String lines[] = dict.split("\\r?\\n");
+//        Toast.makeText(this, lines[0], Toast.LENGTH_LONG).show();
 
     }
 
