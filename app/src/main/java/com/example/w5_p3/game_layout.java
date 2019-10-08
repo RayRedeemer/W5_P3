@@ -150,7 +150,7 @@ public class game_layout extends Fragment {
             }
         }
 
-        if (numOfVowels >= 2 || multipleConsonantsUsed){
+        if (numOfVowels < 2 || multipleConsonantsUsed){
             score-=2;
         } else {
             score = (numOfVowels*2)+(numOfConsonants*1);
@@ -179,6 +179,7 @@ public class game_layout extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        dict = dict.toLowerCase();
         String lines[] = dict.split("\\r?\\n");
         final List<String> dictionary = Arrays.asList(lines);
 
@@ -880,8 +881,12 @@ public class game_layout extends Fragment {
             @Override
             public void onClick(View view) {
 
+                currentWord = currentWord.toLowerCase();
+                Toast.makeText(getActivity(), currentWord, Toast.LENGTH_LONG).show();
                 if (dictionary.contains(currentWord)) {
                     score += wordScore();
+                } else {
+                    score -= 5;
                 }
                 CFL.sendScore(score);
             }
