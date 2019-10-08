@@ -16,10 +16,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -163,6 +166,21 @@ public class game_layout extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_game_layout, container, false);
 
+
+        // creating a dictionary to check the words
+        String dict = "";
+        try {
+            InputStream is = getActivity().getAssets().open("words.txt");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            dict = new String(buffer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String lines[] = dict.split("\\r?\\n");
+        final List<String> dictionary = Arrays.asList(lines);
 
         // Instantiate every button
         btn1 = view.findViewById(R.id.btn1);
@@ -859,6 +877,10 @@ public class game_layout extends Fragment {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (dictionary.contains(currentWord)) {
+                    score += wordScore();
+                }
                 CFL.sendScore(score);
             }
         });
