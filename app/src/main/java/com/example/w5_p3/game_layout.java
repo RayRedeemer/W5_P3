@@ -298,18 +298,18 @@ public class game_layout extends Fragment {
                 }
 
                 else {
-                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(2)));
-                    usedButtons.add(btn2);
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(1)));
+                    usedButtons.add(btn1);
                     for (Button btn : allButtons){
                         if (!usedButtons.contains(btn) && validPositions.contains(btn)){
                             btn.setClickable(true);
                         }
                     }
-                    currentWord += btn2.getText().toString();
+                    currentWord += btn1.getText().toString();
                     Log.i("word", currentWord);
                     currentWordView.setText(currentWord);
-                    btn2.setClickable(false);
-                    usedButtons.add(btn2);
+                    btn1.setClickable(false);
+                    usedButtons.add(btn1);
                 }
             }
         });
