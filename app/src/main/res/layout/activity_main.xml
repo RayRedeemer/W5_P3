@@ -9,22 +9,24 @@
     <fragment
         android:id="@+id/bottomFragment"
         android:name="com.example.w5_p3.bottomFragment"
-        android:layout_width="285dp"
-        android:layout_height="57dp"
-        android:layout_marginBottom="108dp"
+        android:layout_width="408dp"
+        android:layout_height="85dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.625"
         app:layout_constraintStart_toStartOf="parent" />
 
     <fragment
         android:id="@+id/gamelayoutFragment"
         android:name="com.example.w5_p3.game_layout"
-        android:layout_width="484dp"
-        android:layout_height="559dp"
+        android:layout_width="409dp"
+        android:layout_height="618dp"
         android:layout_marginBottom="46dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomFragment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.125" />
 </androidx.constraintlayout.widget.ConstraintLayout>

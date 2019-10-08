@@ -18,6 +18,5 @@ public class MainActivity extends AppCompatActivity implements game_layout.Contr
     public void sendScore(int score) {
         bottomFragment receivingFragment = (bottomFragment)getSupportFragmentManager().findFragmentById(R.id.bottomFragment);
         receivingFragment.setGameScore(score);
-
     }
 }
