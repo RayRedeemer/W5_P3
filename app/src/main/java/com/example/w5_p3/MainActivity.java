@@ -1,3 +1,4 @@
+// CS 591 STAR Team: Simon Acevedo Rodriguez, Abdulshaheed Alqunber, Timothy Mirazoian, Ruidong Duan
 package com.example.w5_p3;
 
 import androidx.appcompat.app.AppCompatActivity;
