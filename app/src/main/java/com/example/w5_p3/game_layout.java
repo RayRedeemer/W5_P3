@@ -177,6 +177,8 @@ public class game_layout extends Fragment {
         btn14 = view.findViewById(R.id.btn14);
         btn15 = view.findViewById(R.id.btn15);
         btn16 = view.findViewById(R.id.btn16);
+        clearBtn = view.findViewById(R.id.clearButton);
+        submitBtn = view.findViewById(R.id.submitBtn);
 
         // add every button to an arraylist
         allButtons.add(btn1);
