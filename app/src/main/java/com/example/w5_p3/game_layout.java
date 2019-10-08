@@ -853,6 +853,7 @@ public class game_layout extends Fragment {
             public void onClick(View view) {
                 currentWord = "";
                 firstMove = true;
+                clearSelections();
             }
         });
 
@@ -865,6 +866,27 @@ public class game_layout extends Fragment {
 
         return view;
 
+    }
+
+    /**
+     * Start a new game of Boggle, clearing the list of found words and resetting the board.
+
+    private void startNewGame() {
+        clearSelections();
+        for (Button b : allButtons) {
+        }
+    }
+     */
+
+    /**
+     * Clears all selected letters
+     */
+    public void clearSelections() {
+        for (Button b : allButtons) {
+            //b.setBackgroundColor(original color);
+            b.setClickable(true);
+        }
+        currentWordView.setText("");
     }
 
 }
