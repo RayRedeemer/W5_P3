@@ -179,6 +179,7 @@ public class game_layout extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        dict = dict.toLowerCase();
         String lines[] = dict.split("\\r?\\n");
         final List<String> dictionary = Arrays.asList(lines);
 
@@ -879,6 +880,8 @@ public class game_layout extends Fragment {
             @Override
             public void onClick(View view) {
 
+                currentWord = currentWord.toLowerCase();
+                Toast.makeText(getActivity(), currentWord, Toast.LENGTH_LONG).show();
                 if (dictionary.contains(currentWord)) {
                     score += wordScore();
                 } else {
