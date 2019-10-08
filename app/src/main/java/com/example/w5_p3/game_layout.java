@@ -135,6 +135,8 @@ public class game_layout extends Fragment {
     }
 
     public int wordScore(){
+
+        int newScore = 0;
         // if the current letter is found in the vowels array, then we increment the number of vowels
         // if it is not found in the array, then it must be a consonant
         for (int i = 0; i < currentWord.length(); i++){
@@ -151,12 +153,12 @@ public class game_layout extends Fragment {
         }
 
         if (numOfVowels < 2 || multipleConsonantsUsed){
-            score-=2;
+            newScore -= 2;
         } else {
-            score = (numOfVowels*2)+(numOfConsonants*1);
+            newScore = (numOfVowels*2)+(numOfConsonants*1);
         }
 
-        return score;
+        return newScore;
     }
 
 
@@ -872,6 +874,8 @@ public class game_layout extends Fragment {
             public void onClick(View view) {
                 currentWord = "";
                 firstMove = true;
+                numOfVowels = 0;
+                numOfConsonants = 0;
                 clearSelections();
 
             }
@@ -882,7 +886,7 @@ public class game_layout extends Fragment {
             public void onClick(View view) {
 
                 currentWord = currentWord.toLowerCase();
-                Toast.makeText(getActivity(), currentWord, Toast.LENGTH_LONG).show();
+                // Toast.makeText(getActivity(), currentWord, Toast.LENGTH_LONG).show();
                 if (dictionary.contains(currentWord)) {
                     score += wordScore();
                 } else {
