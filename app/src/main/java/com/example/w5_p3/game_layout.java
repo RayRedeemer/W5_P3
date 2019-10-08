@@ -872,6 +872,7 @@ public class game_layout extends Fragment {
                 currentWord = "";
                 firstMove = true;
                 clearSelections();
+
             }
         });
 
@@ -909,6 +910,7 @@ public class game_layout extends Fragment {
             b.setClickable(true);
         }
         currentWordView.setText("");
+        usedButtons.clear();
     }
 
 }
