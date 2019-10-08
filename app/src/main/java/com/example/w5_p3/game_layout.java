@@ -150,7 +150,7 @@ public class game_layout extends Fragment {
             }
         }
 
-        if (numOfVowels >= 2 || multipleConsonantsUsed){
+        if (numOfVowels < 2 || multipleConsonantsUsed){
             score-=2;
         } else {
             score = (numOfVowels*2)+(numOfConsonants*1);
@@ -881,6 +881,8 @@ public class game_layout extends Fragment {
 
                 if (dictionary.contains(currentWord)) {
                     score += wordScore();
+                } else {
+                    score -= 5;
                 }
                 CFL.sendScore(score);
             }
