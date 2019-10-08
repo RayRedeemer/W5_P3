@@ -817,6 +817,13 @@ public class game_layout extends Fragment {
             }
         });
 
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CFL.sendScore(score);
+            }
+        });
+
         return view;
 
     }
