@@ -39,8 +39,17 @@ public class game_layout extends Fragment {
     // when we check every letter we can simply loop through the word and if the current letter is not in
     // the vowels array then it is a consonant
 
-    final Character[] vowels = {'A', 'I', 'E', 'O', 'U'};
+    final char[] vowels = new char[]{'A', 'I', 'E', 'O', 'U'};
 
+    // Variables to keep track of the amount of vowels and consonants being used
+
+    private int numOfVowels = 0;
+    private int numOfConsonants = 0;
+    ArrayList<Character> consonantsUsed = new ArrayList<>();
+
+    // boolean used to verify if the user has used the same consonant more than once
+
+    private boolean multipleConsonantsUsed;
 
     // This hashmap contains every button position ([1, 2, 3, 4] and then a new row that begins with 5,
     // and so forth) as the key and the the other button positions that a user is able to click as the value
@@ -116,6 +125,31 @@ public class game_layout extends Fragment {
     public void onAttach(Context context){
         super.onAttach(context);
         CFL = (ControlFragmentListener) context;
+    }
+
+    public int wordScore(){
+        // if the current letter is found in the vowels array, then we increment the number of vowels
+        // if it is not found in the array, then it must be a consonant
+        for (int i = 0; i < currentWord.length(); i++){
+            if(Arrays.asList(vowels).contains(currentWord.charAt(i))){
+                numOfVowels += 1;
+            }
+             else {
+                 consonantsUsed.add(currentWord.charAt(i));
+                 numOfConsonants += 1;
+                 if (consonantsUsed.contains(currentWord.charAt(i))){
+                     multipleConsonantsUsed = true;
+                 }
+            }
+        }
+
+        if (numOfVowels >= 2 || multipleConsonantsUsed){
+            score-=2;
+        } else {
+            score = (numOfVowels*2)+(numOfConsonants*1);
+        }
+
+        return score;
     }
 
 
@@ -786,7 +820,5 @@ public class game_layout extends Fragment {
         return view;
 
     }
-
-
 
 }
