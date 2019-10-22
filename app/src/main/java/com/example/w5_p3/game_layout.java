@@ -13,12 +13,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -76,6 +80,9 @@ public class game_layout extends Fragment {
     private Button btn15;
     private Button btn16;
 
+    // Users input of letters
+    private TextView currentWordView;
+
     // Clear & Submit Button
 
     private Button clearBtn;
@@ -128,6 +135,8 @@ public class game_layout extends Fragment {
     }
 
     public int wordScore(){
+
+        int newScore = 0;
         // if the current letter is found in the vowels array, then we increment the number of vowels
         // if it is not found in the array, then it must be a consonant
         for (int i = 0; i < currentWord.length(); i++){
@@ -143,13 +152,13 @@ public class game_layout extends Fragment {
             }
         }
 
-        if (numOfVowels >= 2 || multipleConsonantsUsed){
-            score-=2;
+        if (numOfVowels < 2 || multipleConsonantsUsed){
+            newScore -= 2;
         } else {
-            score = (numOfVowels*2)+(numOfConsonants*1);
+            newScore = (numOfVowels*2)+(numOfConsonants*1);
         }
 
-        return score;
+        return newScore;
     }
 
 
@@ -159,6 +168,22 @@ public class game_layout extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_game_layout, container, false);
 
+
+        // creating a dictionary to check the words
+        String dict = "";
+        try {
+            InputStream is = getActivity().getAssets().open("words.txt");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            dict = new String(buffer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        dict = dict.toLowerCase();
+        String lines[] = dict.split("\\r?\\n");
+        final List<String> dictionary = Arrays.asList(lines);
 
         // Instantiate every button
         btn1 = view.findViewById(R.id.btn1);
@@ -177,6 +202,7 @@ public class game_layout extends Fragment {
         btn14 = view.findViewById(R.id.btn14);
         btn15 = view.findViewById(R.id.btn15);
         btn16 = view.findViewById(R.id.btn16);
+        currentWordView = view.findViewById(R.id.userInput);
         clearBtn = view.findViewById(R.id.clearButton);
         submitBtn = view.findViewById(R.id.submitBtn);
 
@@ -260,6 +286,7 @@ public class game_layout extends Fragment {
                 if (firstMove) {
                     currentWord += btn1.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn1.setClickable(false);
                     usedButtons.add(btn1);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(1)));
@@ -273,17 +300,18 @@ public class game_layout extends Fragment {
                 }
 
                 else {
-                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(2)));
-                    usedButtons.add(btn2);
+                    ArrayList<Button> validPositions = new ArrayList<Button>(Arrays.asList(clickableBtnPositions.get(1)));
+                    usedButtons.add(btn1);
                     for (Button btn : allButtons){
                         if (!usedButtons.contains(btn) && validPositions.contains(btn)){
                             btn.setClickable(true);
                         }
                     }
-                    currentWord += btn2.getText().toString();
+                    currentWord += btn1.getText().toString();
                     Log.i("word", currentWord);
-                    btn2.setClickable(false);
-                    usedButtons.add(btn2);
+                    currentWordView.setText(currentWord);
+                    btn1.setClickable(false);
+                    usedButtons.add(btn1);
                 }
             }
         });
@@ -294,6 +322,7 @@ public class game_layout extends Fragment {
                 if (firstMove) {
                     currentWord += btn2.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn2.setClickable(false);
                     usedButtons.add(btn2);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(2)));
@@ -316,6 +345,7 @@ public class game_layout extends Fragment {
                     }
                     currentWord += btn2.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn2.setClickable(false);
                     usedButtons.add(btn2);
                 }
@@ -328,6 +358,7 @@ public class game_layout extends Fragment {
                 if (firstMove) {
                     currentWord += btn3.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn3.setClickable(false);
                     usedButtons.add(btn3);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(3)));
@@ -350,6 +381,7 @@ public class game_layout extends Fragment {
                     }
                     currentWord += btn3.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn3.setClickable(false);
                     usedButtons.add(btn3);
                 }
@@ -363,6 +395,7 @@ public class game_layout extends Fragment {
                     //Log.i("first move", "first move");
                     currentWord += btn4.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn4.setClickable(false);
                     usedButtons.add(btn4);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(4)));
@@ -385,6 +418,7 @@ public class game_layout extends Fragment {
                     }
                     currentWord += btn4.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn4.setClickable(false);
                     usedButtons.add(btn4);
                 }
@@ -398,6 +432,7 @@ public class game_layout extends Fragment {
                     //Log.i("first move", "first move");
                     currentWord += btn5.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn5.setClickable(false);
                     usedButtons.add(btn4);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(5)));
@@ -420,6 +455,7 @@ public class game_layout extends Fragment {
                     }
                     currentWord += btn5.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn5.setClickable(false);
                     usedButtons.add(btn5);
                 }
@@ -433,6 +469,7 @@ public class game_layout extends Fragment {
                     //Log.i("first move", "first move");
                     currentWord += btn6.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn6.setClickable(false);
                     usedButtons.add(btn6);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(6)));
@@ -455,6 +492,7 @@ public class game_layout extends Fragment {
                     }
                     currentWord += btn6.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn6.setClickable(false);
                     usedButtons.add(btn6);
                 }
@@ -468,6 +506,7 @@ public class game_layout extends Fragment {
                     //Log.i("first move", "first move");
                     currentWord += btn7.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn7.setClickable(false);
                     usedButtons.add(btn7);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(7)));
@@ -490,6 +529,7 @@ public class game_layout extends Fragment {
                     }
                     currentWord += btn7.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn7.setClickable(false);
                     usedButtons.add(btn7);
                 }
@@ -503,6 +543,7 @@ public class game_layout extends Fragment {
                     //Log.i("first move", "first move");
                     currentWord += btn8.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn8.setClickable(false);
                     usedButtons.add(btn8);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(8)));
@@ -525,6 +566,7 @@ public class game_layout extends Fragment {
                     }
                     currentWord += btn8.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn8.setClickable(false);
                     usedButtons.add(btn8);
                 }
@@ -538,6 +580,7 @@ public class game_layout extends Fragment {
                     //Log.i("first move", "first move");
                     currentWord += btn9.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn9.setClickable(false);
                     usedButtons.add(btn9);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(9)));
@@ -560,6 +603,7 @@ public class game_layout extends Fragment {
                     }
                     currentWord += btn9.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn9.setClickable(false);
                     usedButtons.add(btn9);
                 }
@@ -573,6 +617,7 @@ public class game_layout extends Fragment {
                     //Log.i("first move", "first move");
                     currentWord += btn10.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn10.setClickable(false);
                     usedButtons.add(btn10);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(10)));
@@ -595,6 +640,7 @@ public class game_layout extends Fragment {
                     }
                     currentWord += btn10.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn10.setClickable(false);
                     usedButtons.add(btn10);
                 }
@@ -608,6 +654,7 @@ public class game_layout extends Fragment {
                     //Log.i("first move", "first move");
                     currentWord += btn11.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn11.setClickable(false);
                     usedButtons.add(btn11);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(11)));
@@ -630,6 +677,7 @@ public class game_layout extends Fragment {
                     }
                     currentWord += btn11.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn11.setClickable(false);
                     usedButtons.add(btn11);
                 }
@@ -643,6 +691,7 @@ public class game_layout extends Fragment {
                     //Log.i("first move", "first move");
                     currentWord += btn12.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn12.setClickable(false);
                     usedButtons.add(btn12);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(12)));
@@ -665,6 +714,7 @@ public class game_layout extends Fragment {
                     }
                     currentWord += btn12.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn12.setClickable(false);
                     usedButtons.add(btn12);
                 }
@@ -678,6 +728,7 @@ public class game_layout extends Fragment {
                     //Log.i("first move", "first move");
                     currentWord += btn13.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn13.setClickable(false);
                     usedButtons.add(btn13);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(13)));
@@ -700,6 +751,7 @@ public class game_layout extends Fragment {
                     }
                     currentWord += btn13.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn13.setClickable(false);
                     usedButtons.add(btn13);
                 }
@@ -713,6 +765,7 @@ public class game_layout extends Fragment {
                     //Log.i("first move", "first move");
                     currentWord += btn14.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn14.setClickable(false);
                     usedButtons.add(btn4);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(14)));
@@ -735,6 +788,7 @@ public class game_layout extends Fragment {
                     }
                     currentWord += btn14.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn14.setClickable(false);
                     usedButtons.add(btn14);
                 }
@@ -748,6 +802,7 @@ public class game_layout extends Fragment {
                     //Log.i("first move", "first move");
                     currentWord += btn15.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn5.setClickable(false);
                     usedButtons.add(btn15);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(15)));
@@ -770,6 +825,7 @@ public class game_layout extends Fragment {
                     }
                     currentWord += btn15.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn15.setClickable(false);
                     usedButtons.add(btn15);
                 }
@@ -783,6 +839,7 @@ public class game_layout extends Fragment {
                     //Log.i("first move", "first move");
                     currentWord += btn16.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn16.setClickable(false);
                     usedButtons.add(btn4);
                     clickable = new ArrayList<>(Arrays.asList(clickableBtnPositions.get(16)));
@@ -805,6 +862,7 @@ public class game_layout extends Fragment {
                     }
                     currentWord += btn16.getText().toString();
                     Log.i("word", currentWord);
+                    currentWordView.setText(currentWord);
                     btn16.setClickable(false);
                     usedButtons.add(btn16);
                 }
@@ -816,18 +874,52 @@ public class game_layout extends Fragment {
             public void onClick(View view) {
                 currentWord = "";
                 firstMove = true;
+                numOfVowels = 0;
+                numOfConsonants = 0;
+                clearSelections();
+
             }
         });
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                currentWord = currentWord.toLowerCase();
+                // Toast.makeText(getActivity(), currentWord, Toast.LENGTH_LONG).show();
+                if (dictionary.contains(currentWord)) {
+                    score += wordScore();
+                } else {
+                    score -= 5;
+                }
                 CFL.sendScore(score);
             }
         });
 
         return view;
 
+    }
+
+    /**
+     * Start a new game of Boggle, clearing the list of found words and resetting the board.
+
+    private void startNewGame() {
+        clearSelections();
+        for (Button b : allButtons) {
+        }
+    }
+     */
+
+    /**
+     * Clears all selected letters
+     */
+    public void clearSelections() {
+        for (Button b : allButtons) {
+            //b.setBackgroundColor(original color);
+            b.setClickable(true);
+        }
+        currentWordView.setText("");
+        usedButtons.clear();
     }
 
 }

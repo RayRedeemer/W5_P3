@@ -191,19 +191,22 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/clearButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="CLEAR" />
 
-        <EditText
+        <TextView
             android:id="@+id/userInput"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="22sp" />
 
         <Button
             android:id="@+id/submitBtn"
